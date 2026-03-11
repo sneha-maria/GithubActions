@@ -1,2 +1,12 @@
 name: my-first-workflow
+run-name: Deployed by @${{ github.actor }}
 on: push
+jobs:
+  job1: 
+    name: Job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running single command in Job1
+        run: echo "Hi this is my first workflow job"
+      - name: Check the OS for GitHub Hosted runners
+        run: cat /etc/os-release
