@@ -1,11 +1,6 @@
 name: my-first-workflow
 run-name: Deployed by @${{ github.actor }}
-on: 
-  schedule:
-    - cron: "0/5 * * * *"  
-  workflow_dispatch:
-  push: 
-      
+on: push       
 jobs:
   job1: 
     name: Job1
