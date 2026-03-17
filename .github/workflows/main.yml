@@ -8,9 +8,9 @@ jobs:
     steps:
       - name: Step 1
         run: |
-         pwd
-         ls -ltr
-         hostname
+           pwd
+           ls -ltr
+           hostname
        - name: Step 2 - Checkout
          uses: actions/checkout@v6.0.2
         - name: Step 3
