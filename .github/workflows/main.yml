@@ -6,38 +6,17 @@ jobs:
     name: Job1
     runs-on: ubuntu-latest
     steps:
-      - name: Running single command in Job1
-        run: echo "Hi this is my first workflow job"
-      - name: Check the OS for GitHub Hosted runners
-        run: cat /etc/os-release
-      - name: Calling sleep
-        run: sleep 10
-  job2:
-    name: Job2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking the host name for the runner
-        run: hostname
-      - name: Running multiple commands
+      - name: Step 1
         run: |
-          echo "Hi from Sneha"
-          echo "Current time is `date`"
-  job3:
-    needs: job1
-    name: Job3
-    runs-on: windows-latest
-    steps:
-      - name: Job with single dependency
-        run: sleep 10
-      - name: Check runner info
-        shell: pwsh
-        run: get-computerinfo
-  job4:
-    needs: [ job1, job2, job3 ]
-    name: Job4
-    runs-on: macos-latest
-    steps:
-      - name: Job for multiple dependencies
-        run: sleep 10
-      - name: Checking the runner info
-        run: sw_vers
+         pwd
+         ls -ltr
+         hostname
+       - name: Step 2 - Checkout
+         uses: actions/checkout@v6.0.2
+        - name: Step 3
+          run: |
+            pwd
+            ls -ltr
+            hostname
+         
+         
