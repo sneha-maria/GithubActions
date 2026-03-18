@@ -11,10 +11,10 @@ jobs:
            pwd
            ls -ltr
            hostname
-       - name: Step 2 - Checkout
-         uses: actions/checkout@v6.0.2
-        - name: Step 3
-          run: |
+      - name: Step 2 - Checkout
+        uses: actions/checkout@v6.0.2
+      - name: Step 3
+        run: |
             pwd
             ls -ltr
             hostname
