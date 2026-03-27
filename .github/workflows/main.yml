@@ -38,5 +38,10 @@ jobs:
             ./myartifact.txt
             artifacts/
             !**/hostname.txt
-         
-         
+      - name: Step 7 - Upload from multiple paths without exclusions
+        uses: actions/upload-artifact@v7.0.0
+        with:
+          name: multi_paths_without_exclusions
+          path: |
+            ./myartifact.txt
+            artifacts/
