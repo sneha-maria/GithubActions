@@ -47,6 +47,7 @@ jobs:
             artifacts/
   job2:
     name: Job2
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: Checking current directory
