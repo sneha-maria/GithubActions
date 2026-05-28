@@ -1,6 +1,11 @@
 name: my-first-workflow
 run-name: Deployed by @${{ github.actor }}
-on: push       
+on: 
+  push:
+    branches: 
+      - dev
+      - 'feature-*'
+      - main
 jobs:
   job1: 
     name: Job1
@@ -25,26 +30,6 @@ jobs:
         with:
           name: single_file
           path: ./myartifact.txt
-      - name: Step 5 - Upload from directory
-        uses: actions/upload-artifact@v7.0.0
-        with:
-          name: directory_artifacts
-          path: artifacts/
-      - name: Step 6 - Upload from multiple paths with exclusions
-        uses: actions/upload-artifact@v7.0.0
-        with:
-          name: multi_paths_with_exclusions
-          path: |
-            ./myartifact.txt
-            artifacts/
-            !**/hostname.txt
-      - name: Step 7 - Upload from multiple paths without exclusions
-        uses: actions/upload-artifact@v7.0.0
-        with:
-          name: multi_paths_without_exclusions
-          path: |
-            ./myartifact.txt
-            artifacts/
   job2:
     name: Job2
     needs: job1
@@ -62,50 +47,4 @@ jobs:
         run: |
           pwd
           ls -ltr
-  job3:
-    name: Job3
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking current directory
-        run: |
-          pwd
-          ls -ltr
-      - name: Download single file artifact
-        uses: actions/download-artifact@v8.0.1
-        with:
-          name: directory_artifacts
-      - name: Checking current directory post download
-        run: |
-          pwd
-          ls -ltr
-  job4:
-    name: Job4
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Creating custom folder
-        run: |
-          mkdir -p single_file
-          mkdir -p download_directory
-      - name: Checking current directory
-        run: |
-          pwd
-          ls -ltr
-      - name: Download single file artifact
-        uses: actions/download-artifact@v8.0.1
-        with:
-          name: single_file
-          path: single_file
-      - name: Download directory file artifact
-        uses: actions/download-artifact@v8.0.1
-        with:
-          name: directory_artifacts
-          path: download_directory
-      - name: Checking current directory post download
-        run: |
-          pwd
-          echo 'CHECKING SINGLE FILE FOLDER'
-          ls -ltr single_file
-          echo 'CHECKING DIRECTORY FOLDER'
-          ls -ltr download_directory
+  
