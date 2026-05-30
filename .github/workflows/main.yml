@@ -62,6 +62,8 @@ jobs:
         run: |
           pwd
           ls -ltr
+      - name: Step for PR Demos
+        run: exit 1
   job3:
     name: Job3
     needs: job1
