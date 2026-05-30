@@ -3,8 +3,6 @@ run-name: Deployed by @${{ github.actor }}
 on: 
   push:
     branches: 
-      - dev
-      - 'feature-*'
       - main
   pull_request:
     branches:
@@ -51,4 +49,4 @@ jobs:
           pwd
           ls -ltr
       - name: Step to fail
-        run: exit 1
+        run: exit 0
